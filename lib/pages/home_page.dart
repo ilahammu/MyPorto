@@ -114,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                         Chip(label: Text("Node.js")),
                         Chip(label: Text("Git")),
                         Chip(label: Text("Figma")),
+                        Chip(label: Text("MySql")),
                       ],
                     ),
                   ],
