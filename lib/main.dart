@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'blocs/theme/theme.dart';
 import 'blocs/navigation/navigation.dart';
 import 'blocs/project/project_bloc.dart';
 import 'blocs/contact/contact_form_bloc.dart';
@@ -9,7 +8,6 @@ import 'pages/home_page.dart';
 void main() {
   runApp(MultiBlocProvider(
     providers: [
-      BlocProvider(create: (_) => ThemeBloc()),
       BlocProvider(create: (_) => NavigationCubit()),
       BlocProvider(create: (_) => ProjectBloc()..add(LoadProjects())),
       BlocProvider(create: (_) => ContactFormBloc()),
@@ -23,16 +21,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeBloc, ThemeMode>(
-      builder: (context, mode) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          themeMode: mode,
-          theme: ThemeData.light(),
-          darkTheme: ThemeData.dark(),
-          home: const HomePage(),
-        );
-      },
+    return MaterialApp(
+      title: 'Portfolio Saya',
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.white,
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
